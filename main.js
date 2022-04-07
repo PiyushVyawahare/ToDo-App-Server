@@ -3,7 +3,7 @@ var fs = require("fs");
 var app = express();
 
 app.use(express.json());
-
+app.use(express.static("todo"));
 
 function readContent(path, callback){
     fs.readFile(path, "utf-8", function(err, data){
@@ -11,23 +11,23 @@ function readContent(path, callback){
     });
 }
 
-app.get("/", function(req, res){
-    readContent("todo/index.html", function(data){
-        res.end(data);
-    });
-});
+// app.get("/", function(req, res){
+//     readContent("todo/index.html", function(data){
+//         res.end(data);
+//     });
+// });
 
-app.get("/script.js", function(req, res){
-    readContent("todo/script.js", function(data){
-        res.end(data);
-    });
-});
+// app.get("/script.js", function(req, res){
+//     readContent("todo/script.js", function(data){
+//         res.end(data);
+//     });
+// });
 
-app.get("/style.css", function(req, res){
-    readContent("todo/style.css", function(data){
-        res.end(data);
-    });
-});
+// app.get("/style.css", function(req, res){
+//     readContent("todo/style.css", function(data){
+//         res.end(data);
+//     });
+// });  
 
 app.post("/save", function(req, res){
     readContent("db.txt", function(data){
